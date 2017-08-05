@@ -1,0 +1,47 @@
+
+adduser demo
+passwd demo
+gpasswd -a demo wheel
+gpasswd -a demo apache
+getent group wheel
+getent group apache
+
+sudo yum -y update
+
+sudo yum install wget nano
+
+sudo yum install -y httpd httpd-devel
+
+sudo systemctl status httpd.service
+
+sudo systemctl start httpd.service
+
+sudo systemctl status httpd.service
+sudo systemctl enable httpd.service
+
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --permanent --zone=public --add-port=8000/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=5432/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=10000/tcp
+
+sudo firewall-cmd --reload
+
+sudo yum -y install yum-utils
+sudo yum -y groupinstall development
+sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install python36u
+python3.6 -V
+sudo yum -y install python36u-pip
+sudo yum -y install python36u-devel
+
+python3.6 -V
+
+su demo
+python3.6 -m venv myvenv
+
+source myvenv/bin/activate
+
+pip install django
+django-admin startproject mysite01
+django-admin startproject mysite02
