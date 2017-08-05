@@ -1,0 +1,18 @@
+#Start Script
+script  ~/log001
+
+
+
+#Apache2.4.6
+yum -y update
+yum -y install httpd httpd-devel
+systemctl start httpd
+systemctl enable httpd
+
+
+
+#Python3.6
+#Django1.11
+
+#mod_wsgi
+exit
